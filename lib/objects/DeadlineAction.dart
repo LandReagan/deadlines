@@ -39,4 +39,12 @@ class DeadlineAction {
   }
   PROGRESS_STATE get progressState => _progressState;
   TAKEN_STATE get takenState => _takenState;
+
+  // SETTERS___________________________________________________________________
+
+
+  @override
+  String toString() {
+    return _description ?? 'NO DESCRIPTION' + ' | ';
+  }
 }

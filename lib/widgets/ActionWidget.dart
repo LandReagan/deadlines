@@ -6,10 +6,7 @@ class ActionWidget extends StatelessWidget {
 
   final DeadlineAction _action;
 
-  ActionWidget(this._action) {
-    Firestore.instance.collection('books').document()
-        .setData({ 'title': 'title', 'author': 'author' });
-  }
+  ActionWidget(this._action);
 
   @override
   Widget build(BuildContext context) {
