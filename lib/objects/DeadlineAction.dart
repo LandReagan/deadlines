@@ -1,3 +1,5 @@
+import 'package:deadlines/utils/DateTimeUtils.dart';
+
 /// Due state of an action. Amber state depends on amber period, defined in Action class.
 enum DUE_STATE {GREEN, AMBER, RED}
 /// Taken state used to know if an action has been taken by a user.
@@ -45,6 +47,14 @@ class DeadlineAction {
 
   @override
   String toString() {
-    return _description ?? 'NO DESCRIPTION' + ' | ';
+    String result = '';
+    result += _description ?? 'NO DESCRIPTION';
+    result += ' | ';
+    if (_deadline == null) {
+      result += 'NO DEADLINE';
+    } else {
+      result += DateTimeUtils.dateString(_deadline);
+    }
+    return result;
   }
 }

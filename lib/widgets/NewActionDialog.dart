@@ -1,4 +1,5 @@
 import 'package:deadlines/objects/DeadlineAction.dart';
+import 'package:deadlines/utils/DateTimeUtils.dart';
 import 'package:flutter/material.dart';
 
 class NewActionDialog extends StatefulWidget {
@@ -36,6 +37,34 @@ class _NewActionDialogState extends State<NewActionDialog> {
         ),
 
         // Deadline
+        GestureDetector(
+          onTap: () async {
+            DateTime newDeadline = await showDatePicker(
+              context: context,
+              initialDate: DateTime.now(),
+              firstDate: DateTime.now().subtract(Duration(days: 365)),
+              lastDate: DateTime.now().add(Duration(days: 3650))
+            );
+            setState(() {
+              if (newDeadline != null) {
+                _deadline = newDeadline;
+              }
+            });
+          },
+          child: Container(
+            padding: EdgeInsets.all(10.0),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(20.0)
+            ),
+            child: Text(
+              _deadline == null ? 'DEADLINE' : DateTimeUtils.dateString(_deadline),
+              style: TextStyle(color: Colors.black),
+            ),
+          ),
+        ),
 
         // Buttons
         Row(
